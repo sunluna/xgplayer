@@ -81,7 +81,7 @@ xgplayer supports mobile terminal, but android device brand and system are numer
 For debugging, we provide the example video resource which size is large in github. You can clone the whole git repository which includes codes and example videos with 'git clone --recurse-submodules -j8'. With 'git clone' you will pull only codes of xgplayer and its plugins.
 
 ```
-$ git clone --recurse-submodules -j8 git@github.com:bytedance/xgplayer.git # OR git clone git@github.com:bytedance/xgplayer.git
+$ git clone --recurse-submodules -j8 git@github.com:sunluna/xgplayer.git # OR git clone git@github.com:sunluna/xgplayer.git
 $ cd xgplayer
 $ npm install
 $ npm run dev
