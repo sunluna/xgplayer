@@ -9,6 +9,7 @@ class Proxy {
       controls: false,
       autoplay: options.autoplay,
       playsinline: options.playsinline,
+      preload: options.preload,
       'webkit-playsinline': options.playsinline,
       'x5-playsinline': options.playsinline,
       'x5-video-player-type': options['x5-video-player-type'],
