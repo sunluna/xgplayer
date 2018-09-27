@@ -3,15 +3,15 @@ import util from './utils/util'
 import Errors from './error'
 
 class Proxy {
-  constructor (options) {
+  constructor(options) {
     this._hasStart = false
     this.videoConfig = {
       controls: false,
       autoplay: options.autoplay,
-      playsinline: options.playsinline,
+      playsinline: options.playsinline ? '' : undefined,
       preload: options.preload,
-      'webkit-playsinline': options.playsinline,
-      'x5-playsinline': options.playsinline,
+      'webkit-playsinline': options.playsinline ? '' : undefined,
+      'x5-playsinline': options.playsinline ? '' : undefined,
       'x5-video-player-type': options['x5-video-player-type'],
       'x5-video-player-fullscreen': options['x5-video-player-fullscreen'],
       'x5-video-orientation': options['x5-video-orientation'],
@@ -113,26 +113,26 @@ class Proxy {
     })
   }
 
-  get hasStart () {
+  get hasStart() {
     return this._hasStart
   }
-  set hasStart (bool) {
+  set hasStart(bool) {
     if (typeof bool === 'boolean' && bool === true && !this._hasStart) {
       this._hasStart = true
       this.emit('hasstart')
     }
   }
 
-  play () {
+  play() {
     this.video.play()
   }
-  pause () {
+  pause() {
     this.video.pause()
   }
-  canPlayType () {
+  canPlayType() {
     this.video.canPlayType()
   }
-  getBufferedRange () {
+  getBufferedRange() {
     let range = [0, 0]
     let video = this.video
     let buffered = video.buffered
@@ -152,46 +152,46 @@ class Proxy {
       return [0, 0]
     }
   }
-  set autoplay (isTrue) {
+  set autoplay(isTrue) {
     this.video.autoplay = isTrue
   }
-  get autoplay () {
+  get autoplay() {
     return this.video.autoplay
   }
-  get buffered () {
+  get buffered() {
     return this.video.buffered
   }
-  get crossOrigin () {
+  get crossOrigin() {
     return this.video.crossOrigin
   }
-  set crossOrigin (isTrue) {
+  set crossOrigin(isTrue) {
     this.video.crossOrigin = isTrue
   }
-  get currentSrc () {
+  get currentSrc() {
     return this.video.currentSrc
   }
-  set currentSrc (src) {
+  set currentSrc(src) {
     this.video.currentSrc = src
   }
-  get currentTime () {
+  get currentTime() {
     return this.video.currentTime
   }
-  set currentTime (time) {
+  set currentTime(time) {
     this.video.currentTime = time
   }
-  get defaultMuted () {
+  get defaultMuted() {
     return this.video.defaultMuted
   }
-  set defaultMuted (isTrue) {
+  set defaultMuted(isTrue) {
     this.video.defaultMuted = isTrue
   }
-  get duration () {
+  get duration() {
     return this.video.duration
   }
-  get ended () {
+  get ended() {
     return this.video.ended
   }
-  get error () {
+  get error() {
     let err = this.video.error
     if (!err) {
       return null
@@ -211,19 +211,19 @@ class Proxy {
     }]
     return this.lang ? this.lang[status[err.code - 1].en] : status[err.code - 1].en
   }
-  get loop () {
+  get loop() {
     return this.video.loop
   }
-  set loop (isTrue) {
+  set loop(isTrue) {
     this.video.loop = isTrue
   }
-  get muted () {
+  get muted() {
     return this.video.muted
   }
-  set muted (isTrue) {
+  set muted(isTrue) {
     this.video.muted = isTrue
   }
-  get networkState () {
+  get networkState() {
     let status = [{
       en: 'NETWORK_EMPTY',
       cn: '音频/视频尚未初始化'
@@ -239,25 +239,25 @@ class Proxy {
     }]
     return this.lang ? this.lang[status[this.video.networkState].en] : status[this.video.networkState].en
   }
-  get paused () {
+  get paused() {
     return this.video.paused
   }
-  get playbackRate () {
+  get playbackRate() {
     return this.video.playbackRate
   }
-  set playbackRate (rate) {
+  set playbackRate(rate) {
     this.video.playbackRate = rate
   }
-  get played () {
+  get played() {
     return this.video.played
   }
-  get preload () {
+  get preload() {
     return this.video.preload
   }
-  set preload (isTrue) {
+  set preload(isTrue) {
     this.video.preload = isTrue
   }
-  get readyState () {
+  get readyState() {
     let status = [{
       en: 'HAVE_NOTHING',
       cn: '没有关于音频/视频是否就绪的信息'
@@ -276,34 +276,34 @@ class Proxy {
     }]
     return this.lang ? this.lang[status[this.video.readyState].en] : status[this.video.readyState]
   }
-  get seekable () {
+  get seekable() {
     return this.video.seekable
   }
-  get seeking () {
+  get seeking() {
     return this.video.seeking
   }
-  get src () {
+  get src() {
     return this.video.src
   }
-  set src (url) {
+  set src(url) {
     this.video.src = url
   }
-  get volume () {
+  get volume() {
     return this.video.volume
   }
-  set volume (vol) {
+  set volume(vol) {
     this.video.volume = vol
   }
-  get fullscreen () {
+  get fullscreen() {
     return util.hasClass(this.root, 'xgplayer-is-fullscreen')
   }
-  get bullet () {
+  get bullet() {
     return util.findDom(this.root, 'xg-bullet') ? util.hasClass(util.findDom(this.root, 'xg-bullet'), 'xgplayer-has-bullet') : false
   }
-  get textTrack () {
+  get textTrack() {
     return util.hasClass(this.root, 'xgplayer-is-textTrack')
   }
-  get pip () {
+  get pip() {
     return util.hasClass(this.root, 'xgplayer-pip-active')
   }
 }

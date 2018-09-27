@@ -6,7 +6,7 @@ import {
   version
 } from '../package.json'
 class Player extends Proxy {
-  constructor (options) {
+  constructor(options) {
     super(options)
     this.config = util.deepCopy({
       width: 600,
@@ -84,14 +84,14 @@ class Player extends Proxy {
     }
   }
 
-  start (url = this.config.url) {
+  start(url = this.config.url) {
     let root = this.root
     let player = this
-    function autoFunc () {
-      player.video.play().then(() => {
-        // 支持自动播放
-      })
-      player.video.removeEventListener('canplay', autoFunc)
+    function autoFunc() {
+      if (player.video) {
+        player.video.play();
+        player.video.removeEventListener('canplay', autoFunc);
+      }
     }
     if (util.typeOf(url) === 'String') {
       this.video.src = url
@@ -115,14 +115,14 @@ class Player extends Proxy {
     }, 1)
   }
 
-  reload () {
+  reload() {
     this.video.load()
     this.once('loadeddata', function () {
       this.play()
     })
   }
 
-  destroy () {
+  destroy() {
     let parentNode = this.root.parentNode
     for (let k in this._interval) {
       clearInterval(this._interval[k])
@@ -164,7 +164,7 @@ class Player extends Proxy {
     }
   }
 
-  replay () {
+  replay() {
     let _replay = this._replay
     // ie9 bugfix
     util.removeClass(this.root, 'xgplayer-ended')
@@ -176,7 +176,7 @@ class Player extends Proxy {
     }
   }
 
-  onFocus () {
+  onFocus() {
     let player = this
     util.removeClass(this.root, 'xgplayer-inactive')
     if (player.userTimer) {
@@ -187,18 +187,18 @@ class Player extends Proxy {
     }, player.config.inactive)
   }
 
-  onBlur () {
+  onBlur() {
     if (!this.paused && !this.ended) {
       util.addClass(this.root, 'xgplayer-inactive')
     }
   }
 
-  onPlay () {
+  onPlay() {
     util.addClass(this.root, 'xgplayer-playing')
     util.removeClass(this.root, 'xgplayer-pause')
   }
 
-  onPause () {
+  onPause() {
     util.addClass(this.root, 'xgplayer-pause')
     if (this.userTimer) {
       clearTimeout(this.userTimer)
@@ -206,16 +206,16 @@ class Player extends Proxy {
     this.emit('focus')
   }
 
-  onEnded () {
+  onEnded() {
     util.addClass(this.root, 'xgplayer-ended')
     util.removeClass(this.root, 'xgplayer-playing')
   }
 
-  onSeeking () {
+  onSeeking() {
     // util.addClass(this.root, 'seeking');
   }
 
-  onSeeked () {
+  onSeeked() {
     // for ie,playing fired before waiting
     if (this.waitTimer) {
       clearTimeout(this.waitTimer)
@@ -223,7 +223,7 @@ class Player extends Proxy {
     util.removeClass(this.root, 'xgplayer-isloading')
   }
 
-  onWaiting () {
+  onWaiting() {
     let self = this
     if (self.waitTimer) {
       clearTimeout(self.waitTimer)
@@ -233,7 +233,7 @@ class Player extends Proxy {
     }, 500)
   }
 
-  onPlaying () {
+  onPlaying() {
     if (this.waitTimer) {
       clearTimeout(this.waitTimer)
     }
@@ -241,7 +241,7 @@ class Player extends Proxy {
     util.addClass(this.root, 'xgplayer-playing')
   }
 
-  static install (name, descriptor) {
+  static install(name, descriptor) {
     if (!Player.plugins) {
       Player.plugins = {}
     }

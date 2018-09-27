@@ -8,7 +8,7 @@ util.createDom = function (el = 'div', tpl = '', attrs = {}, cname = '') {
     let key = item
     let value = attrs[item]
     if (el === 'video' || el === 'audio') {
-      if (value) {
+      if (value !== undefined && value !== false) {
         dom.setAttribute(key, value)
       }
     } else {
