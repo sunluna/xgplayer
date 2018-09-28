@@ -58,8 +58,9 @@ class Proxy {
     this.video = util.createDom(this.videoConfig.mediaType, textTrackDom, this.videoConfig, '')
     if (options.autoplay) {
       this.video.autoplay = true
-      // 去掉静音的设定
-      this.video.muted = false
+      if (options.autoplayMuted) {
+        this.video.muted = true
+      }
     }
     this.ev = ['play', 'playing', 'pause', 'ended', 'error', 'seeking', 'seeked',
       'timeupdate', 'waiting', 'canplay', 'canplaythrough', 'durationchange', 'volumechange', 'loadeddata'
@@ -296,7 +297,7 @@ class Proxy {
     this.video.volume = vol
   }
   get fullscreen() {
-    return util.hasClass(this.root, 'xgplayer-is-fullscreen')
+    return util.hasClass(this.root, 'xgplayer-is-fullscreen') || util.hasClass(this.root, 'xgplayer-fullscreen-active')
   }
   get bullet() {
     return util.findDom(this.root, 'xg-bullet') ? util.hasClass(util.findDom(this.root, 'xg-bullet'), 'xgplayer-has-bullet') : false

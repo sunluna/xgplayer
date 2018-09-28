@@ -1,10 +1,49 @@
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/bytedance/xgplayer/compare/v1.1.1...v1.1.2) (2018-09-27)
+
+
+### Bug Fixes
+
+* **example:** update example ([6ebbb40](https://github.com/bytedance/xgplayer/commit/6ebbb40))
+* **flv.js:** fix flv abort while live ([ffd9894](https://github.com/bytedance/xgplayer/commit/ffd9894))
+* **xgplayer:** fix enter-tips error in safari; add autoplayMuted config ([20b2386](https://github.com/bytedance/xgplayer/commit/20b2386))
+* **xgplayer:** fix error refresh ([f16ae60](https://github.com/bytedance/xgplayer/commit/f16ae60))
+* **xgplayer-mp4:** read width and height info from tkhd box ([e58060a](https://github.com/bytedance/xgplayer/commit/e58060a))
+* **xgplayer-music:** fix xgplayer-music lyric inactive bug ([d0a13a1](https://github.com/bytedance/xgplayer/commit/d0a13a1))
+
+
+### Features
+
+* **examples:** add xgplayer-m4a example ([64fe1c6](https://github.com/bytedance/xgplayer/commit/64fe1c6))
+* **xgplayer:** add keyShortcut switch config ([4693427](https://github.com/bytedance/xgplayer/commit/4693427))
+* template simplify ([44c3c49](https://github.com/bytedance/xgplayer/commit/44c3c49))
+* **xgplayer, xgplayer-music:** add music theme(PGC Liang Yuyi); fix progress cache-bar logic ([b85c6bb](https://github.com/bytedance/xgplayer/commit/b85c6bb))
+
+
+
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/bytedance/xgplayer/compare/v1.1.0...v1.1.1) (2018-09-14)
+
+
+### Bug Fixes
+
+* **flv.js/src/index:** flv.js destroy and abort net request when player.emit('') ([4037761](https://github.com/bytedance/xgplayer/commit/4037761))
+* **xgplayer:** fix fullscreen attribute problem in ios safari ([04f1629](https://github.com/bytedance/xgplayer/commit/04f1629))
+
+
+### Features
+
+* **xgplayer:** add keyboard shortcuts ([d62ba86](https://github.com/bytedance/xgplayer/commit/d62ba86)), closes [#78](https://github.com/bytedance/xgplayer/issues/78)
+* **xgplayer-m4a:** add plugin for converting m4a to fmp4 ([9439d74](https://github.com/bytedance/xgplayer/commit/9439d74))
+* **xgplayer-m4a:** add reqTimeLength config ([508ce30](https://github.com/bytedance/xgplayer/commit/508ce30))
+* **xgplayer-m4a, xgplayer-music, xgplayer:** add the method for getting the music fragment with spe ([31a02b9](https://github.com/bytedance/xgplayer/commit/31a02b9))
+* **xgplayer-music, xgplayer:** lrc: i18n, sync; music: go forward or backward; fix progress bug ([4e261ec](https://github.com/bytedance/xgplayer/commit/4e261ec))
+* **xgplayer, xgplayer-music, xgplayer-m4a:** add offline storage with IndexedDB; add next song prel ([d736ca2](https://github.com/bytedance/xgplayer/commit/d736ca2))
+
+
+
 <a name="1.1.0"></a>
-# [1.1.0](https://github.com/bytedance/xgplayer/compare/v1.1.0-beta...v1.1.0) (2018-08-27)
-
-
-
-<a name="1.1.0-beta"></a>
-## [1.1.0-beta](https://github.com/bytedance/xgplayer/compare/v1.0.9...v1.1.0-beta) (2018-08-24)
+# [1.1.0](https://github.com/bytedance/xgplayer/compare/v1.1.0-beta...v1.1.0) (2018-08-24)
 
 
 ### Bug Fixes
