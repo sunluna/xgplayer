@@ -40,7 +40,6 @@ let mobile = function () {
   let player = this
 
   let util = Player.util; let root = player.root
-  // player.config.autoplay = false
   let whitelist = player.config.whitelist
   let pass = whitelistPass(whitelist)
   player.mobilePass = pass
@@ -107,7 +106,7 @@ let mobile = function () {
       svg.reset(iconPath.pause, iconPath.play)
     })
 
-    player.config.volume = player.config.autoplay ? 0 : (player.config.volume !== null ? player.config.volume : 1)
+    player.config.volume = (player.config.volume !== null ? player.config.volume : 1)
     let volume = player.config.volume !== 0 && player.config.volume !== 1 ? 1 : player.config.volume; let scale = 0.0220625
     if (volume === 0) {
       player.video.muted = true

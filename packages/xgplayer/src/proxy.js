@@ -58,7 +58,8 @@ class Proxy {
     this.video = util.createDom(this.videoConfig.mediaType, textTrackDom, this.videoConfig, '')
     if (options.autoplay) {
       this.video.autoplay = true
-      this.video.muted = true
+      // 去掉静音的设定
+      this.video.muted = false
     }
     this.ev = ['play', 'playing', 'pause', 'ended', 'error', 'seeking', 'seeked',
       'timeupdate', 'waiting', 'canplay', 'canplaythrough', 'durationchange', 'volumechange', 'loadeddata'

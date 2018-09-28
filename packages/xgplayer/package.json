@@ -6,6 +6,7 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "webpack --progress --display-chunks -p",
+    "debug": "webpack --progress --display-chunks",
     "watch": "webpack --progress --display-chunks -p --watch"
   },
   "keywords": [
