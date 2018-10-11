@@ -45,17 +45,25 @@ let play = function () {
   })
 
   player.on('play', () => {
-    tips.textContent = tipsPause
-    if (svg.to !== iconPath.pause) {
-      svg.reset(iconPath.pause, iconPath.play)
-    }
+    setTimeout(() => {
+      if (!player.paused) {
+        tips.textContent = tipsPause
+        if (svg.to !== iconPath.pause) {
+          svg.reset(iconPath.pause, iconPath.play)
+        }
+      }
+    }, 0);
   })
 
   player.on('pause', () => {
-    tips.textContent = tipsPlay
-    if (svg.to !== iconPath.play) {
-      svg.reset(iconPath.play, iconPath.pause)
-    }
+    setTimeout(() => {
+      if (player.paused) {
+        tips.textContent = tipsPlay
+        if (svg.to !== iconPath.play) {
+          svg.reset(iconPath.play, iconPath.pause)
+        }
+      }
+    }, 0);
   })
   player.once('destroy', () => {
     btn = null

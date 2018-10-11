@@ -38,8 +38,8 @@ const client = {
   entry: polyfill.concat(['./src/index.js']),
   output: {
     path: `${__dirname}/browser`,
-    filename: 'index.js',
-    library: 'Player',
+    filename: 'xgplayer.js',
+    library: 'xgplayer',
     libraryTarget: 'window'
   },
   module: {

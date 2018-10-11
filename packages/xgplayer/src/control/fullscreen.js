@@ -16,7 +16,19 @@ let fullscreen = function () {
   let tips = util.createDom('xg-tips', tipsFull, {}, 'xgplayer-tips')
   let path = btn.querySelector('path')
   btn.appendChild(tips)
+  let isFullScreenEl = function (el) {
+    let fullEl = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+    return fullEl === el;
+  };
   let getFullscreen = function (el) {
+    if (el) {
+      // 追加专有的结束全屏的方法
+      try {
+        el.querySelector('video').xgExitFullScreen = function () { exitFullscreen(el); };
+      } catch (e) {
+        //
+      }
+    }
     let fullscreeSupport = document.fullscreenEnabled || document.webkitFullscreenEnabled || document.mozFullScreenEnabled || document.msFullscreenEnabled
     path.setAttribute('d', iconPath.active)
     tips.textContent = tipsExitFull
@@ -25,6 +37,10 @@ let fullscreen = function () {
         el.requestFullscreen()
       } else if (el.mozRequestFullScreen) {
         el.mozRequestFullScreen()
+      } else if (el.webkitEnterFullscreen || el.webkitEnterFullScreen || el.enterFullScreen) {
+        el.enterFullScreen && el.enterFullScreen();
+        el.webkitEnterFullscreen && el.webkitEnterFullscreen();
+        el.webkitEnterFullScreen && el.webkitEnterFullScreen();
       } else if (el.webkitRequestFullScreen) {
         el.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT)
       } else if (el.msRequestFullscreen) {
@@ -33,6 +49,9 @@ let fullscreen = function () {
         util.addClass(el, 'xgplayer-fullscreen-active')
       }
     } else {
+      util.addClass(el, 'xgplayer-fullscreen-active')
+    }
+    if (!isFullScreenEl(el)) {
       util.addClass(el, 'xgplayer-fullscreen-active')
     }
   }
@@ -50,9 +69,12 @@ let fullscreen = function () {
       } else if (document.msExitFullscreen) {
         document.msExitFullscreen()
       }
+      el.webkitExitFullScreen && el.webkitExitFullScreen();
+      el.webkitExitFullscreen && el.webkitExitFullscreen();
     } else {
       util.removeClass(el, 'xgplayer-fullscreen-active')
     }
+    util.removeClass(el, 'xgplayer-fullscreen-active');
   }
   root.appendChild(btn);
   ['click', 'touchstart'].forEach(item => {
