@@ -46,22 +46,30 @@ let play = function () {
 
   player.on('play', () => {
     setTimeout(() => {
-      if (!player.paused) {
-        tips.textContent = tipsPause
-        if (svg.to !== iconPath.pause) {
-          svg.reset(iconPath.pause, iconPath.play)
+      try {
+        if (!player.paused) {
+          tips.textContent = tipsPause
+          if (svg.to !== iconPath.pause) {
+            svg.reset(iconPath.pause, iconPath.play)
+          }
         }
+      } catch (e) {
+        //
       }
     }, 0);
   })
 
   player.on('pause', () => {
     setTimeout(() => {
-      if (player.paused) {
-        tips.textContent = tipsPlay
-        if (svg.to !== iconPath.play) {
-          svg.reset(iconPath.play, iconPath.pause)
+      try {
+        if (player.paused) {
+          tips.textContent = tipsPlay
+          if (svg.to !== iconPath.play) {
+            svg.reset(iconPath.play, iconPath.pause)
+          }
         }
+      } catch (e) {
+        //
       }
     }, 0);
   })

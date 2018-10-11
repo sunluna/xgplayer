@@ -126,10 +126,24 @@ class Proxy {
   }
 
   play() {
-    this.video.play()
+    try {
+      let playPromise = this.video.play();
+      if (playPromise) {
+        playPromise.then(() => { }, () => {});
+      }
+    } catch (e) {
+      //
+    }
   }
   pause() {
-    this.video.pause()
+    try {
+      let pausePromise = this.video.pause();
+      if (pausePromise) {
+        pausePromise.then(() => { }, () => {});
+      }
+    } catch (e) {
+      //
+    }
   }
   canPlayType() {
     this.video.canPlayType()

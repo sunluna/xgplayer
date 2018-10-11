@@ -270,7 +270,11 @@ class Player extends Proxy {
       clearTimeout(self.waitTimer)
     }
     self.waitTimer = setTimeout(function () {
-      util.addClass(self.root, 'xgplayer-isloading')
+      try {
+        util.addClass(self.root, 'xgplayer-isloading')
+      } catch (e) {
+        //
+      }
     }, 500)
   }
 
