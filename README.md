@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://raw.githubusercontent.com/sunluna/xgplayer/master/xgplayer.png" width="384" height="96">
+   
 </div>
 <div align="center">
     <a href="https://www.npmjs.com/package/xgplayer" target="_blank">
